@@ -1,2 +1,4 @@
-build/ #build files
-.git/ #git
+#CMake build files
+build/
+#git
+.git/
