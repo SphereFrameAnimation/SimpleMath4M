@@ -2,3 +2,7 @@
 build/
 #git
 .git/
+#VS
+out/
+.vs/
+CMakeSettings.json

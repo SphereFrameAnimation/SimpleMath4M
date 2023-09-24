@@ -8,7 +8,7 @@ set(PROJECT_NAME SimpleMath4M)
 project(${PROJECT_NAME})
 
 #Source and lib
-set(SOURCE_FILES src/PluginMain.cpp)
+set(SOURCE_FILES src/PluginMain.cpp src/PluginMain.hpp src/Add1FNode.cpp src/Add1FNode.hpp)
 set(LIBRARIES OpenMaya Foundation)
 
 #Build
