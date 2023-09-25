@@ -3,7 +3,9 @@
 
 #include "maya/MPxNode.h"
 #include "maya/MFnNumericAttribute.h"
-class Add1FNode : public MPxNode
+#include "maya/MFnEnumAttribute.h"
+
+class Arith1FNode : public MPxNode
 {
 
 	public:
@@ -12,6 +14,7 @@ class Add1FNode : public MPxNode
 		static MObject input0;
 		static MObject input1;
 		static MObject output0;
+		static MObject mode;
 
 		MStatus compute(const MPlug& plug, MDataBlock& dataBlock);
 		static void* creator();
