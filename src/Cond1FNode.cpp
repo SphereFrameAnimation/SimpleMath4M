@@ -1,16 +1,16 @@
-#include "Arith1FNode.hpp"
+#include "Cond1FNode.hpp"
 
-MTypeId Arith1FNode::id(0x0E038); //Internal ID 57400
-MObject Arith1FNode::input0;
-MObject Arith1FNode::input1;
-MObject Arith1FNode::output0;
-MObject Arith1FNode::mode;
+MTypeId Cond1FNode::id(0x0E039); //Internal ID 57401
+MObject Cond1FNode::input0;
+MObject Cond1FNode::input1;
+MObject Cond1FNode::output0;
+MObject Cond1FNode::mode;
 
-MStatus Arith1FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
+MStatus Cond1FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 {
 
 	MStatus status;
-
+	
 	if (plug == output0)
 	{
 
@@ -21,64 +21,69 @@ MStatus Arith1FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 		short m = mHandle.asShort();
 		float i0 = i0Handle.asFloat();
 		float i1 = i1Handle.asFloat();
-		float o0 = 0;
+		bool o0 = false;
 
 		if(m == 0)
 		{
 
-			o0 = i0 + i1;
+			o0 = (i0 == i1);
 
 		}
 		else if(m == 1)
 		{
-
-			o0 = i0 - i1;
-
-		}
-		else if(m == 2)
-		{
-
-			o0 = i0 * i1;
+			
+			o0 = (i0 != i1);
 
 		}
-		else if(m == 3)
+		else if (m == 2)
 		{
 
-			if (i1 != 0)
-			{
-				o0 = i0 / i1;
+			o0 = (i0 >= i1);
 
-			}
-			else
-			{
+		}
+		else if (m == 3)
+		{
 
-				o0 = nanf("");
+			o0 = (i0 <= i1);
 
-			}
+		}
+		else if (m == 4)
+		{
+
+			o0 = (i0 > i1);
+
+		}
+		else if (m == 5)
+		{
+
+			o0 = (i0 < i1);
 
 		}
 
 		MDataHandle o0Handle = dataBlock.outputValue(output0, &status);
-		o0Handle.setFloat(o0);
+		o0Handle.setBool(o0);
 
 	}
-
+	
 	return status;
 
 }
 
-MStatus Arith1FNode::init()
+MStatus Cond1FNode::init()
 {
 
 	MStatus status;
+
 	MFnNumericAttribute nAttr;
 	MFnEnumAttribute eAttr;
-
+	
 	mode = eAttr.create("mode", "m", 0, &status);
-	status = eAttr.addField("add", 0);
-	status = eAttr.addField("sub", 1);
-	status = eAttr.addField("mul", 2);
-	status = eAttr.addField("div", 3);
+	status = eAttr.addField("E", 0);
+	status = eAttr.addField("NE", 1);
+	status = eAttr.addField("G or E", 2);
+	status = eAttr.addField("L or E", 3);
+	status = eAttr.addField("G", 4);
+	status = eAttr.addField("L", 5);
 	status = eAttr.setKeyable(true);
 	status = eAttr.setHidden(false);
 	status = eAttr.setConnectable(false);
@@ -87,12 +92,12 @@ MStatus Arith1FNode::init()
 	input0 = nAttr.create("input0", "i0", MFnNumericData::kFloat, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input0);
-
+	
 	input1 = nAttr.create("input1", "i1", MFnNumericData::kFloat, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input1);
 
-	output0 = nAttr.create("output0", "o0", MFnNumericData::kFloat, 0, &status);
+	output0 = nAttr.create("output0", "o0", MFnNumericData::kBoolean, 0, &status);
 	status = nAttr.setKeyable(false);
 	status = nAttr.setWritable(false);
 	status = addAttribute(output0);
@@ -101,13 +106,14 @@ MStatus Arith1FNode::init()
 	status = attributeAffects(input0, output0);
 	status = attributeAffects(input1, output0);
 
+
 	return status;
 
 }
 
-void* Arith1FNode::creator()
+void* Cond1FNode::creator()
 {
 
-	return new Arith1FNode();
+	return new Cond1FNode();
 
 }
