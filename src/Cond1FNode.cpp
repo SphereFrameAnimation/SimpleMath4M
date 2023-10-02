@@ -3,65 +3,51 @@
 MTypeId Cond1FNode::id(0x0E039); //Internal ID 57401
 MObject Cond1FNode::input0;
 MObject Cond1FNode::input1;
-MObject Cond1FNode::output0;
+MObject Cond1FNode::ifTrue;
+MObject Cond1FNode::ifFalse;
+MObject Cond1FNode::result;
+MObject Cond1FNode::outVal;
 MObject Cond1FNode::mode;
 
 MStatus Cond1FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 {
 
 	MStatus status;
-	
-	if (plug == output0)
+	MDataHandle mHandle = dataBlock.inputValue(mode, &status);
+	MDataHandle i0Handle = dataBlock.inputValue(input0, &status);
+	MDataHandle i1Handle = dataBlock.inputValue(input1, &status);
+
+	short m = mHandle.asShort();
+	float i0 = i0Handle.asFloat();
+	float i1 = i1Handle.asFloat();
+	bool cResult = computeResult(m, i0, i1);
+
+	if (plug == result)
 	{
 
-		MDataHandle mHandle = dataBlock.inputValue(mode, &status);
-		MDataHandle i0Handle = dataBlock.inputValue(input0, &status);
-		MDataHandle i1Handle = dataBlock.inputValue(input1, &status);
+		MDataHandle reHandle = dataBlock.outputValue(result, &status);
+		reHandle.setBool(cResult);
 
-		short m = mHandle.asShort();
-		float i0 = i0Handle.asFloat();
-		float i1 = i1Handle.asFloat();
-		bool o0 = false;
+	}
+	else if (plug == outVal)
+	{
 
-		if(m == 0)
+		MDataHandle iTHandle = dataBlock.inputValue(ifTrue, &status);
+		MDataHandle iFHandle = dataBlock.inputValue(ifFalse, &status);
+		MDataHandle oVHandle = dataBlock.outputValue(outVal, &status);
+
+		if (cResult)
 		{
 
-			o0 = (i0 == i1);
+			oVHandle.setFloat(iTHandle.asFloat());
 
 		}
-		else if(m == 1)
-		{
-			
-			o0 = (i0 != i1);
-
-		}
-		else if (m == 2)
+		else
 		{
 
-			o0 = (i0 >= i1);
+			oVHandle.setFloat(iFHandle.asFloat());
 
 		}
-		else if (m == 3)
-		{
-
-			o0 = (i0 <= i1);
-
-		}
-		else if (m == 4)
-		{
-
-			o0 = (i0 > i1);
-
-		}
-		else if (m == 5)
-		{
-
-			o0 = (i0 < i1);
-
-		}
-
-		MDataHandle o0Handle = dataBlock.outputValue(output0, &status);
-		o0Handle.setBool(o0);
 
 	}
 	
@@ -97,15 +83,32 @@ MStatus Cond1FNode::init()
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input1);
 
-	output0 = nAttr.create("output0", "o0", MFnNumericData::kBoolean, 0, &status);
+	ifTrue = nAttr.create("ifTrue", "iT", MFnNumericData::kFloat, 0, &status);
+	status = nAttr.setKeyable(true);
+	status = addAttribute(ifTrue);
+
+	ifFalse = nAttr.create("ifFalse", "iF", MFnNumericData::kFloat, 0, &status);
+	status = nAttr.setKeyable(true);
+	status = addAttribute(ifFalse);
+
+	result = nAttr.create("result", "re", MFnNumericData::kBoolean, 0, &status);
 	status = nAttr.setKeyable(false);
 	status = nAttr.setWritable(false);
-	status = addAttribute(output0);
+	status = addAttribute(result);
 
-	status = attributeAffects(mode, output0);
-	status = attributeAffects(input0, output0);
-	status = attributeAffects(input1, output0);
+	outVal = nAttr.create("outVal", "oV", MFnNumericData::kFloat, 0, &status);
+	status = nAttr.setKeyable(false);
+	status = nAttr.setWritable(false);
+	status = addAttribute(outVal);
 
+	status = attributeAffects(mode, result);
+	status = attributeAffects(input0, result);
+	status = attributeAffects(input1, result);
+	status = attributeAffects(mode, outVal);
+	status = attributeAffects(input0, outVal);
+	status = attributeAffects(input1, outVal);
+	status = attributeAffects(ifTrue, outVal);
+	status = attributeAffects(ifFalse, outVal);
 
 	return status;
 
@@ -115,5 +118,51 @@ void* Cond1FNode::creator()
 {
 
 	return new Cond1FNode();
+
+}
+
+bool Cond1FNode::computeResult(short m, float i0, float i1)
+{
+
+	bool o0 = false;
+
+	if (m == 0)
+	{
+
+		o0 = (i0 == i1);
+
+	}
+	else if (m == 1)
+	{
+
+		o0 = (i0 != i1);
+
+	}
+	else if (m == 2)
+	{
+
+		o0 = (i0 >= i1);
+
+	}
+	else if (m == 3)
+	{
+
+		o0 = (i0 <= i1);
+
+	}
+	else if (m == 4)
+	{
+
+		o0 = (i0 > i1);
+
+	}
+	else if (m == 5)
+	{
+
+		o0 = (i0 < i1);
+
+	}
+
+	return o0;
 
 }
