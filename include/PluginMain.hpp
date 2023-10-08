@@ -6,5 +6,6 @@
 #include "maya/MFnPlugin.h"
 #include "Arith1FNode.hpp"
 #include "Cond1FNode.hpp"
+#include "Exp1FNode.hpp"
 
 #endif
