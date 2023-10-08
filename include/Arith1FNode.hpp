@@ -1,5 +1,5 @@
-#ifndef SF4M_ADD1FNODE
-#define SF4M_ADD1FNODE
+#ifndef SM4M_ADD1FNODE
+#define SM4M_ADD1FNODE
 
 #include "maya/MPxNode.h"
 #include "maya/MFnNumericAttribute.h"

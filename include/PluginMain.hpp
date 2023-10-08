@@ -1,5 +1,5 @@
-#ifndef SF4M_MAIN
-#define SF4M_MAIN
+#ifndef SM4M_MAIN
+#define SM4M_MAIN
 
 #include "maya/MPxNode.h"
 #include "maya/MIOStream.h"
