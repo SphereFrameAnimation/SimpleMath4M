@@ -4,6 +4,9 @@
 #include "maya/MPxNode.h"
 #include "maya/MFnTypedAttribute.h"
 #include "maya/MFnNumericAttribute.h"
+#include <string>
+#include <algorithm>
+#include <vector>
 
 class Exp1FNode : public MPxNode
 {
@@ -18,6 +21,10 @@ class Exp1FNode : public MPxNode
 		MStatus compute(const MPlug& plug, MDataBlock& dataBlock);
 		static void* creator();
 		static MStatus init();
+
+		bool isFloat(std::string& str);
+		std::vector<std::string> split(std::string& str);
+		float eval(std::vector<std::string>& vec, float f);
 
 };
 
