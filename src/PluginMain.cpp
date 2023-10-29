@@ -9,6 +9,7 @@ MStatus initializePlugin(MObject pObj)
 	status = plugin.registerNode("SM4M_Arith1F", Arith1FNode::id, Arith1FNode::creator, Arith1FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_Cond1F", Cond1FNode::id, Cond1FNode::creator, Cond1FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_Exp1F", Exp1FNode::id, Exp1FNode::creator, Exp1FNode::init, MPxNode::kDependNode);
+	status = plugin.registerNode("SM4M_Arith2F", Arith2FNode::id, Arith2FNode::creator, Arith2FNode::init, MPxNode::kDependNode);
 
 	return status;
 
@@ -23,6 +24,7 @@ MStatus uninitializePlugin(MObject pObj)
 	status = plugin.deregisterNode(Arith1FNode::id);
 	status = plugin.deregisterNode(Cond1FNode::id);
 	status = plugin.deregisterNode(Exp1FNode::id);
+	status = plugin.deregisterNode(Arith2FNode::id);
 
 	return status;
 

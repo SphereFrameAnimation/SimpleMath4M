@@ -7,5 +7,6 @@
 #include "Arith1FNode.hpp"
 #include "Cond1FNode.hpp"
 #include "Exp1FNode.hpp"
+#include "Arith2FNode.hpp"
 
 #endif
