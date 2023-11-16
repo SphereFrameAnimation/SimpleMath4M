@@ -38,20 +38,6 @@ MStatus Arith2FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 			y = i0[1] - i1[1];
 
 		}
-		else if (m == 2)
-		{
-
-			x = i0[0] * i1[0];
-			y = i0[1] * i1[1];
-
-		}
-		else if (m == 3)
-		{
-
-			x = i1[0] == 0 ? nanf("") : i0[0] / i1[0];
-			y = i1[1] == 0 ? nanf("") : i0[1] / i1[1];
-
-		}
 
 		MDataHandle o0Handle = dataBlock.outputValue(output0, &status);
 		o0Handle.set2Float(x, y);
@@ -72,8 +58,6 @@ MStatus Arith2FNode::init()
 	mode = eAttr.create("mode", "m", 0, &status);
 	status = eAttr.addField("add", 0);
 	status = eAttr.addField("sub", 1);
-	status = eAttr.addField("mul", 2);
-	status = eAttr.addField("div", 3);
 	status = eAttr.setKeyable(true);
 	status = eAttr.setHidden(false);
 	status = eAttr.setConnectable(false);
