@@ -1,6 +1,6 @@
 #include "Arith2FNode.hpp"
 
-MTypeId Arith2FNode::id(0x0E03B);
+MTypeId Arith2FNode::id(0x0E03B); //Internal ID 57403
 MObject Arith2FNode::input0;
 MObject Arith2FNode::input1;
 MObject Arith2FNode::output0;

@@ -8,5 +8,6 @@
 #include "Cond1FNode.hpp"
 #include "Exp1FNode.hpp"
 #include "Arith2FNode.hpp"
+#include "Dot2FNode.hpp"
 
 #endif
