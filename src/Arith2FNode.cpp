@@ -1,6 +1,11 @@
+/*
+  Arith2FNode.cpp
+  ===============
+  Arith2FNode class implementation
+*/
 #include "Arith2FNode.hpp"
 
-MTypeId Arith2FNode::id(0x0E03B); //Internal ID 57403
+MTypeId Arith2FNode::id(0x0E03B); //Node ID 57403 [TEST ONLY]
 MObject Arith2FNode::input0;
 MObject Arith2FNode::input1;
 MObject Arith2FNode::output0;
@@ -24,14 +29,14 @@ MStatus Arith2FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 		float x = 0.0f;
 		float y = 0.0f;
 
-		if (m == 0)
+		if (m == 0) //ADD
 		{
 
 			x = i0[0] + i1[0];
 			y = i0[1] + i1[1];
 
 		}
-		else if (m == 1)
+		else if (m == 1) //SUB
 		{
 
 			x = i0[0] - i1[0];
@@ -55,6 +60,7 @@ MStatus Arith2FNode::init()
 	MFnNumericAttribute nAttr;
 	MFnEnumAttribute eAttr;
 
+	//Mode attribute
 	mode = eAttr.create("mode", "m", 0, &status);
 	status = eAttr.addField("add", 0);
 	status = eAttr.addField("sub", 1);
@@ -63,19 +69,23 @@ MStatus Arith2FNode::init()
 	status = eAttr.setConnectable(false);
 	status = addAttribute(mode);
 
+	//Input0 attribute
 	input0 = nAttr.create("input0", "i0", MFnNumericData::k2Float, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input0);
 
+	//Input1 attribute
 	input1 = nAttr.create("input1", "i1", MFnNumericData::k2Float, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input1);
 
+	//Output0 attribute
 	output0 = nAttr.create("output0", "o0", MFnNumericData::k2Float, 0, &status);
 	status = nAttr.setKeyable(false);
 	status = nAttr.setWritable(false);
 	status = addAttribute(output0);
 
+	//Affect output
 	status = attributeAffects(mode, output0);
 	status = attributeAffects(input0, output0);
 	status = attributeAffects(input1, output0);

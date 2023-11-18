@@ -1,6 +1,11 @@
+/*
+  Arith1FNode.cpp
+  ===============
+  Arith1FNode class implementation
+*/
 #include "Arith1FNode.hpp"
 
-MTypeId Arith1FNode::id(0x0E038); //Internal ID 57400
+MTypeId Arith1FNode::id(0x0E038); //Node ID 57400 [TEST ONLY]
 MObject Arith1FNode::input0;
 MObject Arith1FNode::input1;
 MObject Arith1FNode::output0;
@@ -23,28 +28,28 @@ MStatus Arith1FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 		float i1 = i1Handle.asFloat();
 		float o0 = 0;
 
-		if(m == 0)
+		if(m == 0) //ADD
 		{
 
 			o0 = i0 + i1;
 
 		}
-		else if(m == 1)
+		else if(m == 1) //SUB
 		{
 
 			o0 = i0 - i1;
 
 		}
-		else if(m == 2)
+		else if(m == 2) //MUL
 		{
 
 			o0 = i0 * i1;
 
 		}
-		else if(m == 3)
+		else if(m == 3) //DIV
 		{
 
-			if (i1 != 0)
+			if (i1 != 0) //Divide by 0 check
 			{
 				o0 = i0 / i1;
 
@@ -74,6 +79,7 @@ MStatus Arith1FNode::init()
 	MFnNumericAttribute nAttr;
 	MFnEnumAttribute eAttr;
 
+	//Mode attribute
 	mode = eAttr.create("mode", "m", 0, &status);
 	status = eAttr.addField("add", 0);
 	status = eAttr.addField("sub", 1);
@@ -84,19 +90,23 @@ MStatus Arith1FNode::init()
 	status = eAttr.setConnectable(false);
 	status = addAttribute(mode);
 
+	//Input0 attribute
 	input0 = nAttr.create("input0", "i0", MFnNumericData::kFloat, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input0);
 
+	//Input1 attribute
 	input1 = nAttr.create("input1", "i1", MFnNumericData::kFloat, 0, &status);
 	status = nAttr.setKeyable(true);
 	status = addAttribute(input1);
 
+	//Output0 attribute
 	output0 = nAttr.create("output0", "o0", MFnNumericData::kFloat, 0, &status);
 	status = nAttr.setKeyable(false);
 	status = nAttr.setWritable(false);
 	status = addAttribute(output0);
 
+	//Affect output
 	status = attributeAffects(mode, output0);
 	status = attributeAffects(input0, output0);
 	status = attributeAffects(input1, output0);

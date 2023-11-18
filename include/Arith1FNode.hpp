@@ -1,10 +1,18 @@
+/*
+  Arith1FNode.hpp
+  ===============
+  Header for Arith1FNode class.
+*/
 #ifndef SM4M_ADD1FNODE
 #define SM4M_ADD1FNODE
 
 #include "maya/MPxNode.h"
 #include "maya/MFnNumericAttribute.h"
 #include "maya/MFnEnumAttribute.h"
-
+/*
+  The Arith1FNode computes a specified arithmetic operation on two one-dimensional float input values.
+  Arithmetic operations include: addition, subtraction, multiplication and division.
+*/
 class Arith1FNode : public MPxNode
 {
 

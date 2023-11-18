@@ -1,6 +1,11 @@
+/*
+  Dot2FNode.hpp
+  =============
+  Dot2FNode class implementation
+*/
 #include "Dot2FNode.hpp"
 
-MTypeId Dot2FNode::id(0x0E03C); //Internal ID 57404
+MTypeId Dot2FNode::id(0x0E03C); //Node ID 57404 [TEST ONLY]
 MObject Dot2FNode::input0;
 MObject Dot2FNode::input1;
 MObject Dot2FNode::output0;
@@ -20,7 +25,7 @@ MStatus Dot2FNode::compute(const MPlug& plug, MDataBlock& dataBlock)
 		float* i1 = i1Handle.asFloat2();
 		float o0 = 0;
 
-		o0 = i0[0] * i1[0] + i0[1] * i1[1];
+		o0 = i0[0] * i1[0] + i0[1] * i1[1]; //Dot product
 
 		MDataHandle o0Handle = dataBlock.outputValue(output0, &status);
 		o0Handle.setFloat(o0);
