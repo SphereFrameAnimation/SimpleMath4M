@@ -16,5 +16,7 @@
 #include "Exp1FNode.hpp"
 #include "Arith2FNode.hpp"
 #include "Dot2FNode.hpp"
+#include "Arith3FNode.hpp"
+#include "Dot3FNode.hpp"
 
 #endif
