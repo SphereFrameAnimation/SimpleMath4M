@@ -1,6 +1,6 @@
 /*
- Dot2FNode.hpp
-  ============
+  Dot2FNode.hpp
+  =============
   Header for Dot2FNode class
 */
 #ifndef SM4M_DOT2FNODE
@@ -10,7 +10,7 @@
 #include "maya/MFnNumericAttribute.h"
 
 /*
-  The Dot2FNode computes the vector dot product between two two-dimensional float input vectors.
+  The Dot2FNode computes the vector dot product of two two-dimensional float input vectors.
 */
 class Dot2FNode : public MPxNode
 {
