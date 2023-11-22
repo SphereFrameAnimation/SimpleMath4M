@@ -19,6 +19,7 @@ MStatus initializePlugin(MObject pObj)
 	status = plugin.registerNode("SM4M_Dot2F", Dot2FNode::id, Dot2FNode::creator, Dot2FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_Arith3F", Arith3FNode::id, Arith3FNode::creator, Arith3FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_Dot3F", Dot3FNode::id, Dot3FNode::creator, Dot3FNode::init, MPxNode::kDependNode);
+	status = plugin.registerNode("SM4M_Cross3F", Cross3FNode::id, Cross3FNode::creator, Cross3FNode::init, MPxNode::kDependNode);
 
 	return status;
 
@@ -38,6 +39,7 @@ MStatus uninitializePlugin(MObject pObj)
 	status = plugin.deregisterNode(Dot2FNode::id);
 	status = plugin.deregisterNode(Arith3FNode::id);
 	status = plugin.deregisterNode(Dot3FNode::id);
+	status = plugin.deregisterNode(Cross3FNode::id);
 
 	return status;
 

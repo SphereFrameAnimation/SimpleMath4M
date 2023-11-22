@@ -9,7 +9,7 @@ set(PROJECT_NAME SimpleMath4M)
 project(${PROJECT_NAME})
 
 #Source and lib
-set(SOURCE_FILES src/PluginMain.cpp src/Arith1FNode.cpp src/Cond1FNode.cpp src/Exp1FNode.cpp src/Arith2FNode.cpp src/Dot2FNode.cpp src/Arith3FNode.cpp src/Dot3FNode.cpp)
+set(SOURCE_FILES src/PluginMain.cpp src/Arith1FNode.cpp src/Cond1FNode.cpp src/Exp1FNode.cpp src/Arith2FNode.cpp src/Dot2FNode.cpp src/Arith3FNode.cpp src/Dot3FNode.cpp src/Cross3FNode.cpp)
 set(LIBRARIES OpenMaya Foundation)
 
 #Build

@@ -18,5 +18,6 @@
 #include "Dot2FNode.hpp"
 #include "Arith3FNode.hpp"
 #include "Dot3FNode.hpp"
+#include "Cross3FNode.hpp"
 
 #endif
