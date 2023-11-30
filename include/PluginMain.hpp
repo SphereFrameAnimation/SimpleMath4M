@@ -19,5 +19,7 @@
 #include "Arith3FNode.hpp"
 #include "Dot3FNode.hpp"
 #include "Cross3FNode.hpp"
+#include "ScalarProduct2FNode.hpp"
+#include "ScalarProduct3FNode.hpp"
 
 #endif
