@@ -21,5 +21,7 @@
 #include "Cross3FNode.hpp"
 #include "ScalarProduct2FNode.hpp"
 #include "ScalarProduct3FNode.hpp"
+#include "Vec2FNode.hpp"
+#include "Vec3FNode.hpp"
 
 #endif

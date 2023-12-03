@@ -21,6 +21,8 @@ set(SOURCE_FILES
 	src/Cross3FNode.cpp
 	src/ScalarProduct2FNode.cpp
 	src/ScalarProduct3FNode.cpp
+	src/Vec2FNode.cpp
+	src/Vec3FNode.cpp
 )
 set(LIBRARIES OpenMaya Foundation)
 

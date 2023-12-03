@@ -22,6 +22,8 @@ MStatus initializePlugin(MObject pObj)
 	status = plugin.registerNode("SM4M_Cross3F", Cross3FNode::id, Cross3FNode::creator, Cross3FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_ScalarProduct2F", ScalarProduct2FNode::id, ScalarProduct2FNode::creator, ScalarProduct2FNode::init, MPxNode::kDependNode);
 	status = plugin.registerNode("SM4M_ScalarProduct3F", ScalarProduct3FNode::id, ScalarProduct3FNode::creator, ScalarProduct3FNode::init, MPxNode::kDependNode);
+	status = plugin.registerNode("SM4M_Vec2F", Vec2FNode::id, Vec2FNode::creator, Vec2FNode::init, MPxNode::kDependNode);
+	status = plugin.registerNode("SM4M_Vec3F", Vec3FNode::id, Vec3FNode::creator, Vec3FNode::init, MPxNode::kDependNode);
 
 	return status;
 
@@ -44,6 +46,8 @@ MStatus uninitializePlugin(MObject pObj)
 	status = plugin.deregisterNode(Cross3FNode::id);
 	status = plugin.deregisterNode(ScalarProduct2FNode::id);
 	status = plugin.deregisterNode(ScalarProduct3FNode::id);
+	status = plugin.deregisterNode(Vec2FNode::id);
+	status = plugin.deregisterNode(Vec3FNode::id);
 
 	return status;
 
