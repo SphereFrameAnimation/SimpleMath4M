@@ -9,7 +9,7 @@ MStatus initializePlugin(MObject pObj)
 {
 
 	MStatus status;
-	MFnPlugin plugin(pObj, "SPHEREFRAME ANIMATION", "1.0.0", "Any");
+	MFnPlugin plugin(pObj, PLUGIN_VENDOR, PLUGIN_VERSION, "Any");
 
 	//Register nodes
 	status = plugin.registerNode("SM4M_Arith1F", Arith1FNode::id, Arith1FNode::creator, Arith1FNode::init, MPxNode::kDependNode);
