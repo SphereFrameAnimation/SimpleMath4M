@@ -1,11 +1,11 @@
 # SimpleMath4M
 A plugin for Autodesk Maya adding simplified math nodes. Many of the math nodes within Maya contain a lot of extra inputs and outputs which are largely unnecessary and make make complex node networks challenging to read. This plugin seeks to solve this dilemma by adding nodes which are far more simplified, exposing only the necessary I/O channels and improving the readability of networks.
 
-## Roadmap (as of 16/10/2023)
+## Roadmap (as of 04/12/2023)
 - Basic arithmetic [Completed]
 - Single variable functions [Completed]
 - Numeric conditionals [Completed]
-- Vector math (Multi-variable math) [In development]
+- Vector math (Multi-variable math) [Completed]
 - Basic matrix math
 
 ## Setup local development environment for Windows (Visual Studio)
@@ -24,6 +24,6 @@ cmake -B ./build -S ./ -G "Visual Studio 17 2022" -A x64
 ```bash
 cmake --build ./build
 ```
-7) The ``SimpleMath4M.mll`` file will be located under ``./build/debug/``. You can then copy this file into the ``devkitBase/plug-ins/plug-ins`` directory you created in step 1. To test the plugin, open Maya and load the plugin through the plugins manager.
+7) The ``.mll`` file will be located under ``./build/debug/``. You can then copy this file into the ``devkitBase/plug-ins/plug-ins`` directory you created in step 1. To test the plugin, open Maya and load the plugin through the plugins manager.
 
 ## Setup local development environment for MacOS (XCode) [Currently unavailable]
