@@ -5,7 +5,7 @@
 */
 #include "Dot3FNode.hpp"
 
-MTypeId Dot3FNode::id(0x0E03E); //Node ID 57406 [TEST ONLY]
+MTypeId Dot3FNode::id(0x13D5C1, 0x06); //ID 1299905-006
 MObject Dot3FNode::input0;
 MObject Dot3FNode::input1;
 MObject Dot3FNode::output0;

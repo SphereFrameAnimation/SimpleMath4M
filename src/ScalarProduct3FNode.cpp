@@ -5,7 +5,7 @@
 */
 #include "ScalarProduct3FNode.hpp"
 
-MTypeId ScalarProduct3FNode::id(0x0E041); //Node ID 57409 [TEST ONLY]
+MTypeId ScalarProduct3FNode::id(0x13D5C1, 0x09); //ID 1299905-009
 MObject ScalarProduct3FNode::scalar;
 MObject ScalarProduct3FNode::vector;
 MObject ScalarProduct3FNode::output;

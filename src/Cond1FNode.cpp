@@ -5,7 +5,7 @@
 */
 #include "Cond1FNode.hpp"
 
-MTypeId Cond1FNode::id(0x0E039); //Node ID 57401 [TEST ONLY]
+MTypeId Cond1FNode::id(0x13D5C1, 0x03); //ID 1299905-003
 MObject Cond1FNode::input0;
 MObject Cond1FNode::input1;
 MObject Cond1FNode::ifTrue;

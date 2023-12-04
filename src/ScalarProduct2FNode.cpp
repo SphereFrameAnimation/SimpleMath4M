@@ -5,7 +5,7 @@
 */
 #include "ScalarProduct2FNode.hpp"
 
-MTypeId ScalarProduct2FNode::id(0x0E040); //Node ID 57408 [TEST ONLY]
+MTypeId ScalarProduct2FNode::id(0x13D5C1, 0x08); //ID 1299905-008
 MObject ScalarProduct2FNode::scalar;
 MObject ScalarProduct2FNode::vector;
 MObject ScalarProduct2FNode::output;

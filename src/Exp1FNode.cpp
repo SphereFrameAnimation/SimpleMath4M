@@ -7,7 +7,7 @@
 using std::string;
 using std::vector;
 
-MTypeId Exp1FNode::id(0x0E03A); //Node ID 57402 [TEST ONLY]
+MTypeId Exp1FNode::id(0x13D5C1, 0x07); //ID 1299905-007
 MObject Exp1FNode::input0;
 MObject Exp1FNode::exp; //String expression
 MObject Exp1FNode::output0;

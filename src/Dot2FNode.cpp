@@ -5,7 +5,7 @@
 */
 #include "Dot2FNode.hpp"
 
-MTypeId Dot2FNode::id(0x0E03C); //Node ID 57404 [TEST ONLY]
+MTypeId Dot2FNode::id(0x13D5C1, 0x05); //ID 1299905-005
 MObject Dot2FNode::input0;
 MObject Dot2FNode::input1;
 MObject Dot2FNode::output0;

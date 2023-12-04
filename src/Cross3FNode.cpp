@@ -5,7 +5,7 @@
 */
 #include "Cross3FNode.hpp"
 
-MTypeId Cross3FNode::id(0x0E03F); //Node ID 57407 [TEST ONLY]
+MTypeId Cross3FNode::id(0x13D5C1, 0x04); //ID 1299905-004
 MObject Cross3FNode::input0;
 MObject Cross3FNode::input1;
 MObject Cross3FNode::output0;

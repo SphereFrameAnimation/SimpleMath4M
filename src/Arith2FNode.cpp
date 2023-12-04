@@ -5,7 +5,7 @@
 */
 #include "Arith2FNode.hpp"
 
-MTypeId Arith2FNode::id(0x0E03B); //Node ID 57403 [TEST ONLY]
+MTypeId Arith2FNode::id(0x13D5C1, 0x01); //ID 1299905-001
 MObject Arith2FNode::input0;
 MObject Arith2FNode::input1;
 MObject Arith2FNode::output0;

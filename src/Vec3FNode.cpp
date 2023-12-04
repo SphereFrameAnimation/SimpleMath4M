@@ -5,7 +5,7 @@
 */
 #include "Vec3FNode.hpp"
 
-MTypeId Vec3FNode::id(0x0E043); //Node ID 57411 [TEST ONLY]
+MTypeId Vec3FNode::id(0x13D5C1, 0x0B); //ID 1299905-011
 MObject Vec3FNode::vec;
 
 MStatus Vec3FNode::compute(const MPlug& plug, MDataBlock& data)

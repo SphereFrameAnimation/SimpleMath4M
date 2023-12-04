@@ -5,7 +5,7 @@
 */
 #include "Vec2FNode.hpp"
 
-MTypeId Vec2FNode::id(0x0E042); //Node ID 57410 [TEST ONLY]
+MTypeId Vec2FNode::id(0x13D5C1, 0x0A); //ID 1299905-010
 MObject Vec2FNode::vec;
 
 MStatus Vec2FNode::compute(const MPlug& plug, MDataBlock& data)
